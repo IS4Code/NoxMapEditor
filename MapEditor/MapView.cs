@@ -1211,7 +1211,7 @@ Setstyle(Controlstyles.OptimizedDoubleBuffer, true); */
                     Map.Objects.Add(obj);
                     unsafe
                     {
-                        IntPtr ptr = Marshal.StringToHGlobalAnsi(obj.Name);
+                        IntPtr ptr = Marshal.StringToHGlobalAuto(obj.Name);
                         int val = obj.UniqueID;
                         if ((ThingDb.Things[obj.Name].Class & ThingDb.Thing.ClassFlags.DOOR) == ThingDb.Thing.ClassFlags.DOOR)
                         {
@@ -1511,7 +1511,7 @@ Setstyle(Controlstyles.OptimizedDoubleBuffer, true); */
                     unsafe
                     {
                         MainWindow.myMap.DeleteObject((int)val);
-                        IntPtr ptr = Marshal.StringToHGlobalAnsi(SelectedObject.Name);
+                        IntPtr ptr = Marshal.StringToHGlobalAuto(SelectedObject.Name);
                         if ((ThingDb.Things[SelectedObject.Name].Class & ThingDb.Thing.ClassFlags.DOOR) == ThingDb.Thing.ClassFlags.DOOR)
                         {
                         MainWindow.myMap.AddObject(ptr.ToPointer(), (int)SelectedObject.Location.X, (int)SelectedObject.Location.Y, val, SelectedObject.modbuf[0]);
@@ -1623,7 +1623,7 @@ Setstyle(Controlstyles.OptimizedDoubleBuffer, true); */
                             unsafe
                             {
                                // col = Color.FromArgb();
-                                IntPtr ptr = Marshal.StringToHGlobalAnsi(tile.Graphic);
+                                IntPtr ptr = Marshal.StringToHGlobalAuto(tile.Graphic);
                                 Map.Tiles.Add(tilePt, tile);
                                 MainWindow.myMap.AddTile(ptr.ToPointer(), tilePt.Y, tilePt.X, CreateVariation(tilePt, (ushort)tileVar.SelectedIndex, (byte)tileGraphic.SelectedIndex));
                             }
@@ -3026,7 +3026,7 @@ Setstyle(Controlstyles.OptimizedDoubleBuffer, true); */
                         {
                             AutoEdge(tilePt);
                         }
-                        IntPtr ptr = Marshal.StringToHGlobalAnsi(tile.Graphic);
+                        IntPtr ptr = Marshal.StringToHGlobalAuto(tile.Graphic);
                         MainWindow.myMap.AddTile(ptr.ToPointer(), tilePt.Y, tilePt.X, tile.Variation);
                         tilePt.X++;
                         //tileDrag = tilePt;  // Re-enable to allow tile dragging again
@@ -3070,7 +3070,7 @@ Setstyle(Controlstyles.OptimizedDoubleBuffer, true); */
                                     variation,
                                     newblends
                                     );
-                                IntPtr ptr = Marshal.StringToHGlobalAnsi(tile.Graphic);
+                                IntPtr ptr = Marshal.StringToHGlobalAuto(tile.Graphic);
                                 if (!Map.Tiles.ContainsKey(tile.Location))
                                 {
                                     Map.Tiles.Add(tile.Location, tile);
@@ -3666,8 +3666,8 @@ Setstyle(Controlstyles.OptimizedDoubleBuffer, true); */
         {
             unsafe
             {
-                IntPtr ptr = Marshal.StringToHGlobalAnsi((string)cboObjCreate.SelectedItem);
-                IntPtr ptr2 = Marshal.StringToHGlobalAnsi(Application.StartupPath + "\\object.bmp");
+                IntPtr ptr = Marshal.StringToHGlobalAuto((string)cboObjCreate.SelectedItem);
+                IntPtr ptr2 = Marshal.StringToHGlobalAuto(Application.StartupPath + "\\object.bmp");
                 MainWindow.myMap.SaveObjectToBMP(ptr.ToPointer(), ptr2.ToPointer());
                 pictureBox1.ImageLocation = Application.StartupPath + "\\object.bmp";
             }
