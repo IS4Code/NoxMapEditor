@@ -1039,6 +1039,7 @@ namespace NoxMapEditor
 		[STAThread]
 		static void Main()
 		{
+			Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
             try
             {
                 Debug.Listeners.Add(new TextWriterTraceListener("Debug.log"));
